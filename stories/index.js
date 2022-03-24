@@ -17,6 +17,7 @@ import Empty from 'components/Appointment/Empty';
 import Show from 'components/Appointment/Show';
 import Confirm from 'components/Appointment/Confirm';
 import Status from 'components/Appointment/Status';
+import Error from 'components/Appointment/Error';
 
 storiesOf('Button', module)
   .addParameters({
@@ -151,4 +152,7 @@ storiesOf('Appointment', module)
       onConfirm={action('onConfirm')}
     />
   ))
-  .add('Status', () => <Status message="Data is Fetching" />);
+  .add('Status', () => <Status message="Data is Fetching" />)
+  .add('Error', () => (
+    <Error message="Could not perform action!" onClose={action('onClose')} />
+  ));
