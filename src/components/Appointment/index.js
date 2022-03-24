@@ -1,6 +1,13 @@
 import React from 'react';
-import './styles.scss';
+import 'components/Appointment/styles.scss';
+
+import Header from './Header';
 
 export default function Appointment(props) {
-  return <article className="appointment">{props.time}</article>;
+  const { time, id, interview } = props;
+  return (
+    <article className="appointment">
+      <Header time={time} />
+    </article>
+  );
 }
