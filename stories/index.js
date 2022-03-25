@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -155,4 +155,20 @@ storiesOf('Appointment', module)
   .add('Status', () => <Status message="Data is Fetching" />)
   .add('Error', () => (
     <Error message="Could not perform action!" onClose={action('onClose')} />
+  ))
+  .add('Create', () => (
+    <Form
+      interviewers={interviewers}
+      onSave={action('onSave')}
+      onCancel={action('onCancel')}
+    />
+  ))
+  .add('Edit', () => (
+    <Form
+      student="Alex Gillespie"
+      interviewer={1}
+      interviewers={interviewers}
+      onSave={action('onSave')}
+      onCancel={action('onCancel')}
+    />
   ));

@@ -1,8 +1,10 @@
 import React from 'react';
-import InterviewerListItem from 'components/InterviewerListItem';
+import InterviewerList from 'components/InterviewerList';
 
 function Form(props) {
-  const { student, interviewer, interviewers, onSave, onCancel } = props;
+  const { interviewers, onSave, onCancel } = props;
+  const [student, setStudent] = useState(props.student || '');
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
