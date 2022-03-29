@@ -4,11 +4,13 @@ import Show from './Show';
 import Empty from './Empty';
 import Header from './Header';
 import Form from './Form';
+import Status from './Status';
 import useVisualMode from 'hooks/useVisualMode';
 
 const EMPTY = 'EMPTY';
 const SHOW = 'SHOW';
 const CREATE = 'CREATE';
+const SAVING = 'SAVING';
 const DELETE = 'DELETE';
 const EDIT = 'EDIT';
 
@@ -20,6 +22,7 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
+    transition(SAVING);
     bookInterview(id, interview).then(() => {
       transition(SHOW);
     });
@@ -34,6 +37,7 @@ export default function Appointment(props) {
       {mode === CREATE && (
         <Form interviewers={interviewers} onSave={save} onCancel={back} />
       )}
+      {mode === SAVING && <Status />}
     </article>
   );
 }
