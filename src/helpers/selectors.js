@@ -15,21 +15,13 @@ export function getInterview(state, interview) {
 }
 
 export function getInterviewersForDay(state, day) {
-  const appointmentIds = state.days.filter((stateDay) => stateDay.name === day);
-  let interviewerArr = [];
-  if (!appointmentIds[0]) {
-    return [];
+  const stateDay = state.days.find((eachDay) => eachDay.name === day);
+  if (stateDay) {
+    const interviewersForDay = stateDay.interviewers.map(
+      (interviewerId) => state.interviewers[interviewerId]
+    );
+
+    return interviewersForDay;
   }
-  appointmentIds[0].appointments
-    .map((id) => state.appointments[id])
-    .forEach((appointment) => {
-      console.log(appointment);
-      if (appointment.interview) {
-        interviewerArr.push(
-          state.interviewers[appointment.interview.interviewer]
-        );
-      }
-    });
-  console.log(interviewerArr);
-  return interviewerArr;
+  return [];
 }
