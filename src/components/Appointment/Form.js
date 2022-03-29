@@ -26,6 +26,7 @@ function Form(props) {
         <form onSubmit={(e) => e.preventDefault()} autoComplete="off">
           <input
             className="appointment__create-input text--semi-bold"
+            value={student}
             name="name"
             type="text"
             placeholder="Enter Student Name"

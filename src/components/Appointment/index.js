@@ -13,8 +13,8 @@ const SHOW = 'SHOW';
 const CREATE = 'CREATE';
 const SAVING = 'SAVING';
 const DELETE = 'DELETE';
-const EDIT = 'EDIT';
 const CONFIRM = 'CONFIRM';
+const EDIT = 'EDIT';
 
 export default function Appointment(props) {
   // prettier-ignore
@@ -49,6 +49,7 @@ export default function Appointment(props) {
           student={interview.student}
           interviewer={interview.interviewer}
           onDelete={() => transition(CONFIRM)}
+          onEdit={() => transition(EDIT)}
           id={id}
         />
       )}
@@ -62,6 +63,15 @@ export default function Appointment(props) {
           onConfirm={() => deleteInterview(id)}
           onCancel={() => transition(SHOW)}
           message="Confirm Deletion"
+        />
+      )}
+      {mode === EDIT && (
+        <Form
+          student={interview.student}
+          interviewers={interviewers}
+          interviewer={interview.interviewer.id}
+          onSave={save}
+          onCancel={back}
         />
       )}
     </article>
