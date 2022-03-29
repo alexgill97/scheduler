@@ -9,10 +9,10 @@ function Confirm(props) {
       <h1 className="text--semi-bold">{message}</h1>
       <section className="appointment__actions">
         <Button onClick={onConfirm} danger>
-          Cancel
+          Confirm
         </Button>
         <Button onClick={onCancel} danger>
-          Confirm
+          Cancel
         </Button>
       </section>
     </main>
