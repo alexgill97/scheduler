@@ -9,6 +9,8 @@ import useVisualMode from 'hooks/useVisualMode';
 const EMPTY = 'EMPTY';
 const SHOW = 'SHOW';
 const CREATE = 'CREATE';
+const DELETE = 'DELETE';
+const EDIT = 'EDIT';
 
 export default function Appointment(props) {
   const { time, id, interview, bookInterview, interviewers } = props;
@@ -18,8 +20,9 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
-    bookInterview(id, interview);
-    transition(SHOW);
+    bookInterview(id, interview).then(() => {
+      transition(SHOW);
+    });
   };
   return (
     <article className="appointment">
