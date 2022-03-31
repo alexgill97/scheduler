@@ -24,7 +24,7 @@ npm run storybook
 
 ## Screenshots
 
-``sh
+
 !["Home Page"](https://github.com/alexgill97/scheduler/blob/master/docs/index.png?raw=true)
 !["Home Page With Form"](https://github.com/alexgill97/scheduler/blob/master/docs/form.png)
-``
+
