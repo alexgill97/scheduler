@@ -13,7 +13,7 @@ const EMPTY = 'EMPTY';
 const SHOW = 'SHOW';
 const CREATE = 'CREATE';
 const SAVING = 'SAVING';
-const DELETE = 'DELETE';
+const DELETING = 'DELETING';
 const CONFIRM = 'CONFIRM';
 const EDIT = 'EDIT';
 const ERROR_SAVE = 'ERROR_SAVE';
@@ -39,7 +39,7 @@ export default function Appointment(props) {
   };
 
   const deleteInterview = (id) => {
-    transition(DELETE, true);
+    transition(DELETING, true);
     cancelInterview(id)
       .then(() => {
         transition(EMPTY);
@@ -63,13 +63,13 @@ export default function Appointment(props) {
       {mode === CREATE && (
         <Form interviewers={interviewers} onSave={save} onCancel={back} />
       )}
-      {mode === SAVING && <Status message="Saving..." />}
-      {mode === DELETE && <Status message="Deleteing..." />}
+      {mode === SAVING && <Status message="Saving" />}
+      {mode === DELETING && <Status message="Deleting" />}
       {mode === CONFIRM && (
         <Confirm
           onConfirm={() => deleteInterview(id)}
           onCancel={() => transition(SHOW)}
-          message="Confirm Deletion"
+          message="Are you sure you want to delete?"
         />
       )}
       {mode === EDIT && (
